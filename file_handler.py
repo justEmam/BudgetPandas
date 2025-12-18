@@ -76,8 +76,19 @@ def write_file(file_path, data:dict):
     Returns:
         None
     """
-    pass
+    columns = list(data.keys())
+    num_rows = len(data[columns[0]])  # assume all columns have the same length
+
+    with open(file_path, mode='w', newline = '') as csvfile:
+        writer = csv.DictWriter(csvfile, fieldnames=columns)
+        writer.writeheader()
+        for i in range(num_rows):
+            row = {}
+            for col in columns:
+                row[col] = data[col][i]
+            writer.writerow(row)
+    
 
 
 df = (read_csv_file('data/titanic.csv',read_dtype('data/titanic_dtype.csv')))
-print(type(df['Sex']))
+# write_file('test.csv',df)
