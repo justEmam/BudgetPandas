@@ -31,7 +31,7 @@ def get_col_min(col:list):
             elif element < result:
                 result = element
         except TypeError:
-            print('Please enter a list of integers or floats (numeric)')
+            # print('Please enter a list of integers or floats (numeric)')
             return
     return(result)
     """
@@ -56,7 +56,7 @@ def get_col_mean(col:list):
                 sum += element
                 count += 1
         except ValueError:
-            print('Please enter a list of integers or floats (numeric)')
+            # print('Please enter a list of integers or floats (numeric)')
             return
     return(sum/count)
     
@@ -88,7 +88,7 @@ def get_col_median(col:list):
         try:
             float(element)
         except ValueError:
-            print('Please enter a list of integers or floats (numeric)')
+            # print('Please enter a list of integers or floats (numeric)')
             return
     
     if length % 2 == 0:
@@ -153,15 +153,15 @@ def get_stat(data:dict, dtypes:dict, function):
     for key in data:
         if dtypes[key] in ['int','float']:
             result[key] = function(data[key])
-        else:
-            print(f"Unsupported Datatype for column {key}") 
+        # else:
+        #     print(f"Unsupported Datatype for column {key}") 
 
     return result
 
 
-df = {"test":[1,2,3,4],
-      "anothertest": [5,6,7,9,'z']}
-print(get_stat(df,{"test":'int',"anothertest": 'str'},get_col_mean))
+# df = {"test":[1,2,3,4],
+#       "anothertest": [5,6,7,9,'z']}
+# print(get_stat(df,{"test":'int',"anothertest": 'str'},get_col_mean))
 
 
 
